@@ -293,9 +293,9 @@ function formatTime(ms) {
     ms %= 60000;
     const seconds = Math.floor(ms / 1000);
     ms %= 1000;
-    const milliseconds = ms;
+    const milliseconds = Math.floor(ms / 10); // Convert to 2 decimal places
 
-    return `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}.${String(milliseconds).padStart(3, '0')}`;
+    return `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}.${String(milliseconds).padStart(2, '0')}`;
 }
 
 function updateStopwatchDisplay() {
@@ -317,7 +317,7 @@ function initStopwatch() {
     stopwatchRunning = false;
     stopwatchElapsedTime = 0;
     stopwatchLapCounter = 1;
-    display.textContent = '00:00:00.000';
+    display.textContent = '00:00:00.00';
     lapsList.innerHTML = '';
     startButton.disabled = false;
     pauseButton.disabled = true;
@@ -351,7 +351,7 @@ function initStopwatch() {
         stopwatchRunning = false;
         stopwatchElapsedTime = 0;
         stopwatchLapCounter = 1;
-        display.textContent = '00:00:00.000';
+        display.textContent = '00:00:00.00';
         lapsList.innerHTML = '';
         startButton.disabled = false;
         pauseButton.disabled = true;
